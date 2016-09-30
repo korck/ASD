@@ -1,2 +1,2 @@
-# PJWSTK
-Projekty na uczelnię
+# Algorytmy i Struktury Danych
+Zadania do wykonania
