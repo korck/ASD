@@ -1,0 +1,2 @@
+# PJWSTK
+Projekty na uczelnię
