@@ -1,3 +1,6 @@
+/*
+ * Skrypt sortujący bąbelkowo
+ */
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -28,6 +31,5 @@ int main(int argc, char *argv[])
     for (i=0;i<tabSize;i++) {
         printf("%d ",table[i]);
     }
-    printf("\n");
     return 0;
 }
