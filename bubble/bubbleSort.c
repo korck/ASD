@@ -10,7 +10,7 @@ void swap (int *val1) {
     *val1 = *(val1+1);
     *(val1+1) = temp;
 }
-/*
+
 int main(int argc, char *argv[])
 {
     int i, j, tabSize = argc-1;
@@ -33,4 +33,3 @@ int main(int argc, char *argv[])
     }
     return 0;
 }
-*/
