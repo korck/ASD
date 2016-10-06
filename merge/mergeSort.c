@@ -1,61 +1,54 @@
 /*
- * Program sortujący przez scalanie
+ Program sortujący poprzez scalanie
  */
 #include <stdio.h>
 #include <stdlib.h>
-int * merge (int *tab1, int *tab2, int size1, int size2) {
-    int     size3 = size1+size2;
-    int     i=0,
-            j=0,
-            k=0;
-    static int* table3;
-    table3 = (int*) calloc(size3,sizeof(int));
-    while(k < size3) {
-        if (*(tab1+i) < *(tab2+j) || j == size2) {
-            table3[k] = *(tab1+i);
-            i++;
-        } else {
-            table3[k] = *(tab2+j);
-            j++;
+
+void sortMerge(int *_tab1, int *_tab2, int _size1, int _size2) {
+    int temp[_size1+_size2];
+    int i=0,
+        j=0,
+        k=0;
+        while( i < (_size1) && j < (_size2)) {
+            if (*(_tab1+i) < *(_tab2+j)) {
+                temp[k++] = *(_tab1+i++);
+            } else {
+                temp[k++] = *(_tab2+j++);
+            }
         }
-        k++;
-    }
-    
-    return table3;
+        while(i < (_size1))
+            temp[k++] = *(_tab1+i++);
+	while(j < (_size2))
+            temp[k++] = *(_tab2+j++);
+    for (i = 0; i<_size1+_size2; i++)
+        *(_tab1+i) = temp[i];
 }
 
-int main (int argc, char *argv[]) {
+void merge (int *table, int size) {
+    if (size > 2) {    
+        int size1 = size-(size/2),
+            size2 = size/2;
+        int *tab1 = table,
+            *tab2 = table + size1;
+        
+        merge(tab1, size1); //Left side
+        merge(tab2, size2); //Right side
+        
+        sortMerge(tab1, tab2, size1, size2);
+    }
+}
+
+int main(int argc, char** argv) {
     int tabSize = argc-1;
     int table[tabSize+1];
-    int i,j,k;
-    for (i=0; i<tabSize; i++)       //Wypełnienie tablicy danymi
+    int i;
+    
+    for (i=0; i<tabSize; i++)       //Filling table with data
         table[i] = atoi(argv[i+1]);
+        
+    merge(table, tabSize);          //Merge table
     
-    int *table3;
-    
-    //if (tabSize % 2 == 0)
-//    for (i=1; i<tabSize; i*=2) {
-//        for (j=0; j==i; j+=i);
-//        table3+ = merge(&table[i*2],&table[(i*2)+1], i, i);
-//    }
-    
-    for(i = 0; i<tabSize; i++) {
-        for (j = 0; j<tabSize)
-    }
-    
-    
-    int     size1 = 4,
-            size2 = 2,
-            size3 = size1+size2;
-    int table1[] = {5,6,7,8};
-    int table2[] = {2,4};
-    
-    
-//    table3 = merge(table1, table2, 4, 2); 
-//    
-//    printf("\ntablica: \n");
-//    for (i=0; i<size3; i++) printf("%d ", *(table3+i));
-//    
-    return 0;
+    for (i=0; i<tabSize; i++)       //Print out
+        printf("%d ", table[i]);    
+    return (EXIT_SUCCESS);
 }
-
