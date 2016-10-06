@@ -3,7 +3,7 @@
  */
 #include <stdio.h>
 #include <stdlib.h>
-/*
+
 int main(int argc, char *argv[]) {
     int tabSize = argc-1;
     int table[tabSize+1];
@@ -25,4 +25,4 @@ int main(int argc, char *argv[]) {
     }                               
     for (i=0; i<tabSize; i++) printf("%d ", table[i]);  //Wylot posortowanych danych
     return 0;
-}*/
+}
